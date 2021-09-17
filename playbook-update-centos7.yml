@@ -13,7 +13,7 @@
   - when: updates.stdout_lines | length > 0
     block:
      - name: install updates using yum
-        yum:
+       yum:
           name: "*"
           state: latest
       - name: install yum-utils
