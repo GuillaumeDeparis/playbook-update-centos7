@@ -3,8 +3,6 @@
   tasks:
   - name: check packages for updates
     shell: yum list updates | awk 'f;/Updates/{f=1;}' | awk '{ print $1 }'
-    debug:
-     msg: "nb package {{ updates.stdout_lines }}"
     changed_when: updates.stdout_lines | length > 0
     args:
      warn: false
