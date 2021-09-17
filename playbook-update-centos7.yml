@@ -16,14 +16,14 @@
        yum:
           name: "*"
           state: latest
-      - name: install yum-utils
-        package:
+     - name: install yum-utils
+       package:
           name: yum-utils
-      - name: check if reboot is required
-        shell: needs-restarting -r
-        failed_when: false
-        register: reboot_required
-        changed_when: false
+     - name: check if reboot is required
+       shell: needs-restarting -r
+       failed_when: false
+       register: reboot_required
+       changed_when: false
   - when: updates.stdout_lines | length > 0 and reboot_required.rc != 0
     block:
       - name: reboot the server if required
